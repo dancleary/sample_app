@@ -1,19 +1,20 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span8">
     <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
 
       </h1>
-  <h2>
-  	
+  
+  <div class="offset3">
+  <h2>	
   <%= link_to "Add Locations", add_path, class: "btn btn-large btn-primary" %>
 <%= link_to "Location Index", index_path, class: "btn btn-large btn-primary" %>
 <%= link_to "Randomize!", random_path, class: "btn btn-large btn-primary" %> 
   </h2>
-
+</div>
     </section>
   </aside>
 </div>
