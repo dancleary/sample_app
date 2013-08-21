@@ -2,6 +2,9 @@ class LocationsController < ApplicationController
   def new
   	@location = Location.new
   end
+  def show
+  	@location = Location.find(params[:id])
+  end
   def index
   	@locations = Location.all
   end
@@ -17,6 +20,23 @@ class LocationsController < ApplicationController
       redirect_to root_path
     else
       render 'new'
+    end
+  end
+  def edit
+  	@location = Location.find(params[:id])
+  end
+  def destroy
+  	@location = Location.find(params[:id])
+  	@location.destroy
+  	redirect_to index_path
+  end
+  def update
+    @location = Location.find(params[:id])
+    if @location.update_attributes(location_params)
+      flash[:success] = "Location updated"
+      redirect_to index_path
+    else
+      render 'edit'
     end
   end
 private
