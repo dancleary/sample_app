@@ -9,9 +9,9 @@ class LocationsController < ApplicationController
   	@locations = Location.all
   end
   def random
-  	keycount = Location.count
-  	ran = rand(1..keycount)
-  	@locations =  Location.find_by id: ran
+  	
+  	@locations =  Location.all.sample
+  	
   end
   def create
     @location = Location.new(location_params)    # Not the final implementation!
