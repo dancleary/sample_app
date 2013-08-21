@@ -6,3 +6,4 @@ class Notifier < ActionMailer::Base
 		mail( :to  => user.email, :subject => 'Thanks for signing up' )
 		
 	end
+end
