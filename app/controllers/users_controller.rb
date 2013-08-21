@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
+      Notifier.welcome_email(@user).deliver
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
@@ -29,9 +30,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
- # def mailer
- #   @user = User.all
- # end
+ 
 
   private
   	def user_params
