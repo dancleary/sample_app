@@ -1,0 +1,27 @@
+<h1>Listing Locations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Food Type</th>
+      <th>Cost</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.address %></td>
+        <td><%= location.food %></td>
+        <td><%= location.price %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

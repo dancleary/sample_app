@@ -1,0 +1,31 @@
+<div class="center">
+<h3>
+	Click here to randomly select a place to eat lunch.
+</h3>
+	<%= link_to "Randomize!", "javascript:history.go(0)" , class: "btn btn-large btn-primary" %>
+	</div>
+	<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>&nbsp&nbsp&nbsp&nbspAddress</th>
+      <th>&nbsp&nbsp&nbsp&nbspFood Type</th>
+      <th>&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCost</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      <tr>
+        <td><%= @locations.name %></td>
+        <td>&nbsp&nbsp&nbsp&nbsp<%= @locations.address %></td>
+        <td>&nbsp&nbsp&nbsp&nbsp<%= @locations.food %></td>
+        <td>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%= @locations.price %></td>
+        
+      </tr>
+    
+  </tbody>
+</table>
+
+<br>

@@ -10,4 +10,8 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def index
+  	@locations= Location.first
+  end
 end

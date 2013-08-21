@@ -1,0 +1,26 @@
+<% provide(:title, 'New Location') %>
+<h1>Add a New Location</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @location do |f| %>
+      
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
+      <%= f.label :food, "Food Type"%>
+      <%= f.select :food, [['American'],['Chinese'],['Thai'],['Mediterranean'], ['Japanese'],['Mexican',]] %>
+
+      <%= f.label :price, "Cost" %>
+      <%= f.select :price, [['High','high'],['Medium','medium'],['Low','low']] %>
+
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+    
+  </div>
+</div>
