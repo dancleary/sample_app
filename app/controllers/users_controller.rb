@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       Notifier.welcome_email(@user).deliver
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Welcome to the Lunch Selector!"
       redirect_to @user
     else
       render 'new'
