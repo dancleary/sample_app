@@ -6,4 +6,9 @@ class Notifier < ActionMailer::Base
 		mail( :to  => user.email, :subject => 'Thanks for signing up' )
 		
 	end
+	def invitation(maillist)
+		
+		
+		mail( :to => @maillist, :subject => 'Lunch Invite')
+	end
 end

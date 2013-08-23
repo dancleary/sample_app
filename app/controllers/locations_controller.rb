@@ -11,8 +11,9 @@ class LocationsController < ApplicationController
   def random
   	
   	@locations =  Location.all.sample
-  	
+  	@users = User.all
   end
+  
   def create
     @location = Location.new(location_params)    # Not the final implementation!
     if @location.save
@@ -39,6 +40,16 @@ class LocationsController < ApplicationController
       render 'edit'
     end
   end
+  
+  def invite
+
+  	@maillist = params{:selected}
+  	if @maillist  != nil
+  		Notifier.invitation(@maillist).deliver
+  	else
+  		render :action => "new"     
+  end
+end
 private
 def location_params
   		params.require(:location).permit(:name, :address, :food, :price)
