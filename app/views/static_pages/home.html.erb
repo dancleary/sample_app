@@ -1,11 +1,26 @@
 <div class="center hero-unit">
   <h1>Anaheim Lunch Selector</h1>
 
-  <h2>
+  
+<% if signed_in? %>
+ <h2>
+ 	Click Randomize! to figure out where to eat lunch.
+ </h2>
+ </div>
+<div class="center">
+  <h2>	
+  <%= link_to "Add Locations", add_path, class: "btn btn-large btn-info" %>
+<%= link_to "Location Index", index_path, class: "btn btn-large btn-info" %>
+<hr>
+
+  </h2>
+  <% else %>
+<h2>
     Sign up to add locations to the database.
   </h2>
-
   <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+  <%end%>
+
 <div class="center">
 	<%= link_to "Randomize!", random_path, class: "btn btn-large btn-primary" %>
