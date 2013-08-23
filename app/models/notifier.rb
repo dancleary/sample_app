@@ -6,9 +6,10 @@ class Notifier < ActionMailer::Base
 		mail( :to  => user.email, :subject => 'Thanks for signing up' )
 		
 	end
-	def invitation(maillist)
+	def invitation(user, place)
+		@loc = place
+
 		
-		
-		mail( :to => @maillist, :subject => 'Lunch Invite')
+		mail( :to => user, :subject => 'Lunch Invite')
 	end
 end

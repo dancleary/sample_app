@@ -58,6 +58,7 @@ jQuery.ajax({
  </script> 
 
    <span class="input-xlarge uneditable-input" value="<%= @locations.name %>"><%=@locations.name%></span> 
+
   <select id="maillist" name="maillist[]" form="mailform" multiple="multiple"/>
   
 
@@ -67,6 +68,7 @@ jQuery.ajax({
   
   <%end%>
   <input type="hidden" name="place" value="<%= @locations.name %>">
+  
   </div>
   <div class="left">
   <span class="help-inline">Use CTRL or Command to select multiple users</span> 

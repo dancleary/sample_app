@@ -43,12 +43,12 @@ class LocationsController < ApplicationController
   
   def invite
 
-  	@maillist = params{:selected}
-  	if @maillist  != nil
-  		Notifier.invitation(@maillist).deliver
-  	else
-  		render :action => "new"     
-  end
+  	@maillist = params{:selected}[:selected]
+    
+    @place = params{:selected}[:place]
+    
+  	Notifier.invitation(@maillist, @place).deliver
+
 end
 private
 def location_params
