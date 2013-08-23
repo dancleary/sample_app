@@ -20,8 +20,13 @@
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
-
+<hr>
+<%= link_to ' Delete my account ', @user, method: :delete, data: { confirm: 'Are you sure?'}%>
+    <hr>
     <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
+
+    <a href="http://gravatar.com/emails">Change</a>
+   
+      
   </div>
 </div>
