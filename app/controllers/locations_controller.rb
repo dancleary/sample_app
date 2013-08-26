@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :signed_in_user, only: [:edit, :update, :destroy]
   def new
   	@location = Location.new
   end
@@ -49,6 +50,12 @@ class LocationsController < ApplicationController
     
   	Notifier.invitation(@maillist, @place).deliver
 
+    respond_to :js
+    flash[:success] = "Invitations Sent!"
+    
+    
+    
+
 end
 private
 def location_params
@@ -56,4 +63,10 @@ def location_params
 
   		
   	end
+    def signed_in_user
+      unless signed_in?
+        store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+    end
 end

@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-	default :from => 'email@gentle-hamlet-6736.herokuapp.com'
+	default :from => 'LunchSelector@gentle-hamlet-6736.herokuapp.com'
 	def welcome_email(user)
 		@user = user
 		@url = 'https://gentle-hamlet-6736.herokuapp.com/signin'
