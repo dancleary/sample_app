@@ -1,4 +1,11 @@
 <% provide(:title, @user.name) %>
+<head>
+
+
+<link rel=”stylesheet” type=”text/css” href=”style1.css” title=”default” />
+<link rel=”alternate stylesheet” type=”text/css” href=”style2.css” title=”alternate” />
+<script type="text/javascript" src="/scripts/styleswitcher.js"></script>
+</head>
 <div class="row">
   <aside class="span8">
     <section>
@@ -21,3 +28,7 @@
     </section>
   </aside>
 </div>
+<body>
+  <a href=”#” onclick=”setActiveStyleSheet(‘default’); return false;”>Change style to default</a>
+<a href=”#” onclick=”setActiveStyleSheet(‘alternate’); return false;”>Change style to alternate</a>
+</body>

@@ -18,7 +18,8 @@
         <td><%= location.address %></td>
         <td><%= location.food %></td>
         <td><%= location.price %></td>
-        <td>&nbsp<%= link_to ' Edit ', edit_location_path(location) %>&nbsp</td>
+        <td><%= link_to 'Select' , location_path(location) %></td>
+        <td><%= link_to ' Edit ', edit_location_path(location) %></td>
         <td><%= link_to ' Destroy ', location, method: :delete, data: { confirm: 'Are you sure?'}%></td>
         
       </tr>

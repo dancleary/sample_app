@@ -184,3 +184,10 @@ input {
   @extend .error;
 }
 
+.marquee {
+  
+  overflow-style: marquee-line;
+  marquee-style: scroll;
+  marquee-play-count: infinite;
+  
+}

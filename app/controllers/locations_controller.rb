@@ -1,10 +1,11 @@
 class LocationsController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update, :destroy]
+  before_action :signed_in_user, only: [:create ,:edit, :update, :destroy]
   def new
   	@location = Location.new
   end
   def show
   	@location = Location.find(params[:id])
+    @users = User.all
   end
   def index
   	@locations = Location.all
@@ -56,6 +57,10 @@ class LocationsController < ApplicationController
     
     
 
+end
+
+def select
+  @locations = Location.find(params[:id])
 end
 private
 def location_params

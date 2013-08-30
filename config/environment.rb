@@ -12,4 +12,7 @@ ActionMailer::Base.smtp_settings = {
 	:port =>  587,
 	:authentication => :plain,
 	:enable_starttls_auto => true
+
 }
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
