@@ -1,34 +1,36 @@
 <% provide(:title, @user.name) %>
-<head>
-
-
-<link rel=”stylesheet” type=”text/css” href=”style1.css” title=”default” />
-<link rel=”alternate stylesheet” type=”text/css” href=”style2.css” title=”alternate” />
-<script type="text/javascript" src="/scripts/styleswitcher.js"></script>
-</head>
+<style>
+hr {
+margin-left: 37.5%;
+width: 25%
+}
+</style>
 <div class="row">
   <aside class="span8">
     <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-        <%=link_to "Edit Profile", edit_user_path(current_user), class: "btn btn-link" %>
+        
     </span>
 
       </h1>
+</aside>
+<br><br>
+<br><br>
+  <hr>
+  <div class="center">
   
-  <div class="offset3">
-  <h2>	
+<h2>	
   <%= link_to "Add Locations", add_path, class: "btn btn-large btn-info" %>
 <%= link_to "Location Index", index_path, class: "btn btn-large btn-info" %>
-<hr>
+</h2>
+	<hr >
+	<h2>
 <%= link_to "Randomize!", random_path, class: "btn btn-large btn-primary" %> 
   </h2>
+
 </div>
     </section>
-  </aside>
+  
 </div>
-<body>
-  <a href=”#” onclick=”setActiveStyleSheet(‘default’); return false;”>Change style to default</a>
-<a href=”#” onclick=”setActiveStyleSheet(‘alternate’); return false;”>Change style to alternate</a>
-</body>
