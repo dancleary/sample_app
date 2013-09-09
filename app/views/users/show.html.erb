@@ -1,36 +1,51 @@
 <% provide(:title, @user.name) %>
 <style>
-hr {
-margin-left: 37.5%;
-width: 25%
+
+#left-column {
+	float:left;
+	width:200px;
+}
+#right-column {
+	float:right;
+	width:720px;
 }
 </style>
-<div class="row">
-  <aside class="span8">
+
+  <div id="header">
     <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-        
-    </span>
-
-      </h1>
-</aside>
-<br><br>
-<br><br>
-  <hr>
-  <div class="center">
-  
-<h2>	
-  <%= link_to "Add Locations", add_path, class: "btn btn-large btn-info" %>
-<%= link_to "Location Index", index_path, class: "btn btn-large btn-info" %>
-</h2>
-	<hr >
-	<h2>
-<%= link_to "Randomize!", random_path, class: "btn btn-large btn-primary" %> 
-  </h2>
-
+        </h1>
+<br>
+<hr>
 </div>
+    
+	<div id="left-column">
+	<h2>
+	
+	  <%= link_to "Add Locations", add_path, class: "btn  btn-info btn-block" %>
+	<li> </li>
+	<%= link_to "Location Index", index_path, class: "btn  btn-info btn-block" %>
+<li> </li>
+	<%= link_to "Randomize!", random_path, class: "btn  btn-primary btn-block" %> 
+	
+	<hr>
+	<%= link_to "Create Micropost", "/microposts/new" , class: "btn btn-primary btn-block"%>
+	 <hr> 
+	</h2>
+      </div>
+
+<div id="right-column">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+
     </section>
   
 </div>
