@@ -14,7 +14,7 @@
   <div id="header">
     <section>
       <h1>
-        <%= gravatar_for @user %>
+        <%= gravatar_for @user, 80 %>
         <%= @user.name %>
         </h1>
 <br>
@@ -32,11 +32,14 @@
 	
 	<hr>
 	<%= link_to "Create Micropost", "/microposts/new" , class: "btn btn-primary btn-block"%>
+	<li></li>
+	<%= link_to "Micropost Feed", "/microposts/feed" , class: "btn btn-primary btn-block"%>
 	 <hr> 
 	</h2>
       </div>
 
 <div id="right-column">
+	<%= render 'follow_form' if signed_in?%>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">

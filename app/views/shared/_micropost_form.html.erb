@@ -3,9 +3,10 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost...", onkeyup: "countChars('micropost_content','charcount');", onkeydown: "countChars('micropost_content','charcount');", onmouseout: "countChars('micropost_content','charcount');"%>
-  </div>
-<div id="chartext"><span id="charcount">0</span> characters entered. (Max: 140) </div><br>
+    <%= f.text_area :content, placeholder: "Compose new micropost...",  onKeyDown:"limitText(this.form.micropost_content,this.form.countdown,140;",
+	onKeyUp:"limitText(this.form.micropost_content,this.form.countdown,140);" %>
+	<font size="2">(Maximum characters: 140)<br>
+	You have <input readonly type="text" name="countdown" size="1" value="140" class="input-mini"> characters left.</font> <br>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>
 

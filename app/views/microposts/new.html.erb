@@ -23,10 +23,13 @@ function countChars(countfrom,displayto) {
       </section>
     </aside>
 	<div class="span8">
-	      <h3>Micropost Feed</h3>
-	      <%= render 'shared/feed' %>
+	      <% if current_user.microposts.any? %>
+	      <h3>Microposts (<%= current_user.microposts.count %>)</h3>
+	      <ol class="microposts">
+	        <%= render 'microposts/micropost' %>
+	      </ol>
+	      <%= will_paginate 'microposts/micropost' %>
+	    <% end %>
 	    </div>
 	
   </div>
-
-

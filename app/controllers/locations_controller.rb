@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :signed_in_user, only: [:create ,:edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
   def new
   	@location = Location.new
   end
@@ -7,9 +8,10 @@ class LocationsController < ApplicationController
   	@location = Location.find(params[:id])
     @users = User.all
   end
-  def index
-  	@locations = Location.all
-  end
+  	def index
+      @locations = Location.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    end
+  
   def random
   	
   	@locations =  Location.all.sample
@@ -73,5 +75,11 @@ def location_params
         store_location
       redirect_to signin_url, notice: "Please sign in."
     end
+    end
+    def sort_column
+      Location.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 end

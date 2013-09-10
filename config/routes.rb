@@ -1,10 +1,15 @@
 SampleApp::Application.routes.draw do
   
   get "selector/randomize"
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :locations
   resources :microposts, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   root 'static_pages#home' , via: 'get'
   match '/signup', to: 'users#new', via: 'get'
@@ -16,6 +21,7 @@ SampleApp::Application.routes.draw do
   match '/contact' , to: 'static_pages#contact' , via: 'get'
   match '/index' , to: 'locations#index' , via: 'get'
   match '/random', to: 'locations#random', via: 'get'
+  match '/microposts/feed', to: 'microposts#feed', via: 'get'
   match '/microposts/new', to: 'microposts#new', via: 'get'
   match '/select', to: 'locations#select' , via: 'get'
   post 'controller/invite/:maillist' => 'locations#invite'

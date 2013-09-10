@@ -1,30 +1,11 @@
 <h1>Existing Locations</h1>
+<%= form_tag index_path, :method => 'get', :id => "locations_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search], class: "input-large search-query" %>
+    <%= submit_tag "Search", :name => nil, class: "btn" %>
+  </p>
 
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Food Type</th>
-      <th>Cost</th>
-      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= location.name %></td>
-        <td><%= location.address %></td>
-        <td><%= location.food %></td>
-        <td><%= location.price %></td>
-        <td><%= link_to 'Select' , location_path(location) %></td>
-        <td><%= link_to ' Edit ', edit_location_path(location) %></td>
-        <td><%= link_to ' Destroy ', location, method: :delete, data: { confirm: 'Are you sure?'}%></td>
-        
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div id="locations"><%= render 'locations' %></div>
+<% end %>
+<%= render 'locindex' %>
+<%= will_paginate @locations %>

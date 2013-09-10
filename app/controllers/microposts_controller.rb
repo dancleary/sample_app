@@ -4,6 +4,11 @@ class MicropostsController < ApplicationController
   def index
   end
   def new
+     @user = current_user
+     @micropost = current_user.microposts.build
+    @microposts = @user.microposts.paginate(page: params[:page])
+  end
+  def feed
     if signed_in?
     @micropost = current_user.microposts.build
     @feed_items = current_user.feed.paginate(page: params[:page])
@@ -17,13 +22,15 @@ class MicropostsController < ApplicationController
       redirect_to current_user
     else
       @feed_items = [ ]
-      render'static_pages/home'
+      render 'microposts/feed'
+      
     end
   end
 
   def destroy
+    @micropost = current_user.microposts.find_by(id: params[:id])
     @micropost.destroy
-    redirect_to root_url
+    redirect_to current_user
   end
   
   private
