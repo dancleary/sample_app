@@ -17,4 +17,5 @@ class Notifier < ActionMailer::Base
   end
   def message(user, recipient)
     mail( :to => recipient, :subject => 'Message from #{user}.')
+  end
 end
