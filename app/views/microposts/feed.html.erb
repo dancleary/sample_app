@@ -1,0 +1,46 @@
+<script language="javascript" type="text/javascript">
+function limitText(limitField, limitCount, limitNum) {
+	if (limitField.value.length > limitNum) {
+		limitField.value = limitField.value.substring(0, limitNum);
+	} else {
+		limitCount.value = limitNum - limitField.value.length;
+	}
+}
+</script>
+<style>
+#chartext {
+	display:inline-block;    
+}
+#charcount {	
+	display:inline-block;
+}
+</style>
+<div class="row">
+    
+<aside class="span4">
+      <section>
+	<br>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+		<%= render 'shared/stats'%>
+	  </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+	<div class="span8">
+	      
+	<h3>Micropost Feed</h3>
+	<%= form_tag microposts_feed_path, :method => 'get' do %>
+	  <p>
+	    <%= text_field_tag :search, params[:search] , placeholder: "Exact Full Name..." , class: "input-large search-query"%>
+	    <%= submit_tag "Search", :name => nil, class:"btn btn-primary" %>
+	  </p>
+	<% end %>
+	      <%= render 'shared/feed' %>
+	    </div>
+	
+  </div>
+
+

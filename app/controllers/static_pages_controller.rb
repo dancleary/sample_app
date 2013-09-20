@@ -10,6 +10,10 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+  
+  def converter; end
+  
+  def api; end
 
   
 end

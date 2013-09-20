@@ -12,12 +12,16 @@ function countChars(countfrom,displayto) {
 	display:inline-block;
 }
 </style>
+<br>
 <div class="row">
     
 <aside class="span4">
       <section>
         <%= render 'shared/user_info' %>
       </section>
+	  <section>
+		<%= render 'shared/stats'%>
+		</section>
       <section>
         <%= render 'shared/micropost_form' %>
       </section>
@@ -26,9 +30,9 @@ function countChars(countfrom,displayto) {
 	      <% if current_user.microposts.any? %>
 	      <h3>Microposts (<%= current_user.microposts.count %>)</h3>
 	      <ol class="microposts">
-	        <%= render 'microposts/micropost' %>
+	        <%= render @microposts %>
 	      </ol>
-	      <%= will_paginate 'microposts/micropost' %>
+	      <%= will_paginate @microposts %>
 	    <% end %>
 	    </div>
 	

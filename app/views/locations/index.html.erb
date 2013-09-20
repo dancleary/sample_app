@@ -2,7 +2,7 @@
 <%= form_tag index_path, :method => 'get', :id => "locations_search" do %>
   <p>
     <%= text_field_tag :search, params[:search], class: "input-large search-query" %>
-    <%= submit_tag "Search", :name => nil, class: "btn" %>
+    <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
   </p>
 
 <div id="locations"><%= render 'locations' %></div>

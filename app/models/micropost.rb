@@ -10,4 +10,16 @@ class Micropost < ActiveRecord::Base
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
            user_id: user.id)
   end
+  
+  def self.search(search)
+    
+    if User.find_by_name(search)
+      search = User.find_by_name(search).id
+    
+      
+      find(:all, :conditions => ['user_id LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end

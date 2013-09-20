@@ -12,4 +12,9 @@ class Notifier < ActionMailer::Base
 		
 		mail( :to => user, :subject => 'Lunch Invite')
 	end
+	def activity(followers)
+    mail( :to => followers, :subject => '#{user} has created a post.')
+  end
+  def message(user, recipient)
+    mail( :to => recipient, :subject => 'Message from #{user}.')
 end

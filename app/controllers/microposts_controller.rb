@@ -1,17 +1,19 @@
 class MicropostsController < ApplicationController
-  before_action :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy, :feed]
   
   def index
   end
   def new
      @user = current_user
      @micropost = current_user.microposts.build
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = @user.microposts.paginate(:per_page => 15,page: params[:page])
   end
   def feed
     if signed_in?
+     
     @micropost = current_user.microposts.build
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @feed_items = current_user.feed.paginate(:per_page => 15,page: params[:page]).search(params[:search])
+    
   end
   end
   def create
@@ -19,9 +21,12 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
-      redirect_to current_user
+      redirect_to microposts_feed_path
+    
+      
     else
       @feed_items = [ ]
+      
       render 'microposts/feed'
       
     end

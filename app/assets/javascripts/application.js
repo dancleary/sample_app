@@ -15,18 +15,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-/**
-* author Remy Sharp
-* url http://remysharp.com/tag/marquee
-*/
- 
-$(function() {
-  $("#locations th a, #locations .pagination a").live("click", function() {
-    $.getScript(this.href);
-    return false;
-  });
-  $("#locations_search input").keyup(function() {
-    $.get($("#locations_search").attr("action"), $("#locations_search").serialize(), null, "script");
-    return false;
-  });
-})

@@ -24,6 +24,8 @@ SampleApp::Application.routes.draw do
   match '/microposts/feed', to: 'microposts#feed', via: 'get'
   match '/microposts/new', to: 'microposts#new', via: 'get'
   match '/select', to: 'locations#select' , via: 'get'
+  match '/converter', to: 'static_pages#converter' , via: 'get'
+  match '/api' , to: 'static_pages#api' , via: 'get'
   post 'controller/invite/:maillist' => 'locations#invite'
 post 'locations/controller/invite/:maillist' => 'locations#invite'
   

@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user, only: :destroy 
   def index
-    @user = User.paginate(page: params[:page])
+    @user = User.paginate(:per_page => 10,page: params[:page])
     @users = @user.search(params[:search])
     
   end
   def show
   	@user =  User.find(params[:id])
-  	@microposts = @user.microposts.paginate(page: params[:page])
+  	@microposts = @user.microposts.paginate(:per_page => 15,page: params[:page])
   end
   def new
   	@user = User.new

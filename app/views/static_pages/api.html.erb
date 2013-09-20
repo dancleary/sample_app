@@ -1,0 +1,32 @@
+<br>
+<head>
+<script type="text/javascript"> 
+function apicall() {
+	var call = document.getElementById('callfield').value;
+	$.ajax({
+    url: "localhost:3001/proxy.php?url=" +
+		        encodeURI(call),
+    type: 'GET',
+	dataType: "text",
+	
+    
+    success: function(response) {
+        console.log(reponse)
+		console.log("Woot!")
+    },
+	failure: function(response) {
+		console.log(response)
+		console.log("oh no!")
+	}
+	
+});
+}
+</script>
+<div id="header">
+	<h1>
+	API Caller
+	</h1>
+	</div>
+	<input type="text" id="callfield" placeholder="Place your API call here..."></input>
+	<button onclick='apicall();'>Submit</button>
+	<input type="textarea" id="responsefield"></input>

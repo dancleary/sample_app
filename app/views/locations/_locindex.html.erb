@@ -1,0 +1,28 @@
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "address"%></th>
+      <th><%= sortable "food", "Food Type" %></th>
+      <th><%= sortable "price", "Cost" %></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.address %></td>
+        <td><%= location.food %></td>
+        <td><%= location.price %></td>
+        <td><%= link_to 'Select' , location_path(location) %></td>
+        <td><%= link_to ' Edit ', edit_location_path(location) %></td>
+        <td><%= link_to ' Destroy ', location, method: :delete, data: { confirm: 'Are you sure?'}%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
