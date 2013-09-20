@@ -4,7 +4,7 @@
 function apicall() {
 	var call = document.getElementById('callfield').value;
 	$.ajax({
-    url: "localhost:3001/proxy.php?url=" +
+    url: "https://gentle-hamlet-6736.herokuapp.com/proxy.php?url=" +
 		        encodeURI(call),
     type: 'GET',
 	dataType: "text",
